@@ -132,6 +132,7 @@ class ReconnectingWebsocket:
                     elif self.ws_state == WSListenerState.EXITING:
                         break
                     elif self.ws.state == ws.protocol.State.CLOSING:
+                        asyncio.sleep(1)
                         continue
                     elif self.ws.state == ws.protocol.State.CLOSED:
                         await self._reconnect()
